@@ -36,4 +36,13 @@ public class ProductRestController {
         }
     }
 
+    @GetMapping(value = "/findAll")
+    public ResponseEntity getAllProduct() {
+        try {
+            return ResponseEntity.accepted().body(productService.getAllProduct());
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+        }
+    }
+
 }
