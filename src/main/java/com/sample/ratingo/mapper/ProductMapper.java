@@ -10,6 +10,7 @@ public class ProductMapper {
         productDO.setId(product.getId());
         productDO.setName(product.getName());
         productDO.setDescription(product.getDescription());
+        productDO.setRatingDO(RatingMapper.map(product.getRating()));
         return productDO;
     }
 

@@ -8,6 +8,8 @@ import com.sample.ratingo.repository.Rating;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class ProductService {
 
@@ -22,6 +24,14 @@ public class ProductService {
         Product newProduct = ProductMapper.map(productDO);
         newProduct.setRating(new Rating());
         return ProductMapper.map(productRepository.save(newProduct));
+    }
+
+    public ProductDO getProduct(Long id) throws Exception {
+        Optional<Product> product = productRepository.findById(id);
+        if(product.isPresent()){
+            return ProductMapper.map(product.get());
+        }
+        throw new Exception("Product with Id : " + id + " does not exist !");
     }
 
 

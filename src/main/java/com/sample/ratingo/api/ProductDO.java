@@ -10,4 +10,6 @@ public class ProductDO {
     private String name;
 
     private String description;
+
+    private RatingDO ratingDO;
 }

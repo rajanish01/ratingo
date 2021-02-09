@@ -23,4 +23,9 @@ public class Rating {
     @Column(name = "average_rating")
     private BigDecimal averageRating = BigDecimal.ZERO;
 
+    @PostPersist
+    public void calculateAverageRating() {
+        averageRating = ratingCount != 0 ? BigDecimal.valueOf(totalRating / ratingCount) : BigDecimal.ZERO;
+    }
+
 }

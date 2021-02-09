@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 @Data
 public class RatingDO {
 
-    private Long productId;
+    private Long id;
 
     private Long totalRating;
 
