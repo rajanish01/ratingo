@@ -38,11 +38,4 @@ public class UserService {
         return userEnrollmentRepository.save(enrollment);
     }
 
-    public void endUserEnrollment(Long enrollmentId) {
-        UserEnrollment userEnrollment = userEnrollmentRepository.findById(enrollmentId).get();
-        userEnrollment.setEndDate(LocalDate.now(Clock.systemUTC()));
-        userEnrollment.setActive(false);
-        userEnrollmentRepository.save(userEnrollment);
-    }
-
 }

@@ -1,5 +1,6 @@
 package com.sample.ratingo.rest.validator;
 
+import com.sample.ratingo.api.RatingVO;
 import com.sample.ratingo.api.UserDO;
 import com.sample.ratingo.api.UserEnrollmentVO;
 import com.sample.ratingo.repository.*;
@@ -71,11 +72,23 @@ public class RequestValidator {
         return errorList;
     }
 
-    public List<String> validateEndEnrollment(Long enrollmentId) {
+    public List<String> validateRating(RatingVO ratingVO){
         errorList.clear();
-        Optional<UserEnrollment> userEnrollment = userEnrollmentRepository.findById(enrollmentId);
-        if (!userEnrollment.isPresent() || !userEnrollment.get().isActive()) {
-            errorList.add("Enrollment Id Invalid OR Enrollment Is Ended !");
+        if(ratingVO.getEnrollmentId() == null){
+            errorList.add("Enrollment Id Can Not Be Null !");
+        }
+        if(ratingVO.getRatedValue() == null
+                || ratingVO.getRatedValue().compareTo(1L) < 0
+                || ratingVO.getRatedValue().compareTo(5L) > 0){
+            errorList.add("Please Rate Between 1-5 !");
+        }
+        Optional<UserEnrollment> enrollment = userEnrollmentRepository.findById(ratingVO.getEnrollmentId());
+        if(!enrollment.isPresent()){
+            errorList.add("Invalid Enrollment Id !");
+            return errorList;
+        }
+        if(!enrollment.get().isActive()){
+            errorList.add("Enrollment Is Over !");
         }
         return errorList;
     }

@@ -51,21 +51,4 @@ public class UserRestController {
         }
     }
 
-    @PutMapping(value = "/enroll/end")
-    public ResponseEntity endUserEnrollment(@RequestParam("id") Long enrollmentId) {
-        try {
-            if (enrollmentId == null) {
-                return ResponseEntity.badRequest().body("Enrollment Id Can Not Be Null !");
-            }
-            List<String> errorList = requestValidator.validateEndEnrollment(enrollmentId);
-            if (!errorList.isEmpty()) {
-                return ResponseEntity.badRequest().body(errorList);
-            }
-            userService.endUserEnrollment(enrollmentId);
-            return ResponseEntity.accepted().body("Enrollment Over ! Thanks For Being With Us !");
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
-        }
-    }
-
 }
