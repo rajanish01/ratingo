@@ -1,4 +1,4 @@
-package com.sample.ratingo.repository.entity;
+package com.sample.ratingo.repository;
 
 import lombok.Data;
 
@@ -11,8 +11,7 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private long id;
+    private Long id;
 
     @Column(name = "name")
     private String name;
@@ -20,8 +19,7 @@ public class Product {
     @Column(name = "description")
     private String description;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "product_rating_id")
+    @OneToOne(targetEntity = Rating.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Rating rating;
 
 }
