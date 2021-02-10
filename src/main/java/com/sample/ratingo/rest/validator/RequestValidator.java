@@ -29,6 +29,11 @@ public class RequestValidator {
 
     List<String> errorList = new ArrayList<>();
 
+    /**
+     * New User Validator
+     * @param userDO
+     * @return
+     */
     public List<String> validateNewUser(UserDO userDO) {
         errorList.clear();
         if (userDO.getFirstName() == null || userDO.getFirstName().equals("")) {
@@ -50,6 +55,11 @@ public class RequestValidator {
         return errorList;
     }
 
+    /**
+     * Validate New Enrollment
+     * @param enrollmentVO
+     * @return
+     */
     public List<String> validateEnrollment(UserEnrollmentVO enrollmentVO) {
         errorList.clear();
         if (enrollmentVO.getProductId() == null || enrollmentVO.getUserId() == null) {
@@ -72,6 +82,11 @@ public class RequestValidator {
         return errorList;
     }
 
+    /**
+     * Validate rating
+     * @param ratingVO
+     * @return
+     */
     public List<String> validateRating(RatingVO ratingVO){
         errorList.clear();
         if(ratingVO.getEnrollmentId() == null){

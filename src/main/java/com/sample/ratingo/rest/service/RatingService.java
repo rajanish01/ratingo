@@ -26,6 +26,11 @@ public class RatingService {
         this.productRepository = productRepository;
     }
 
+    /**
+     * Rate a Product and Calculates average rating
+     *
+     * @param ratingVO
+     */
     public void rate(RatingVO ratingVO) {
         UserEnrollment userEnrollment = userEnrollmentRepository.findById(ratingVO.getEnrollmentId()).get();
         userEnrollment.setActive(false);

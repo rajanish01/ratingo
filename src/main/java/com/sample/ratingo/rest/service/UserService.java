@@ -10,9 +10,6 @@ import com.sample.ratingo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.Clock;
-import java.time.LocalDate;
-
 @Service
 public class UserService {
 
@@ -26,11 +23,23 @@ public class UserService {
         this.userEnrollmentRepository = userEnrollmentRepository;
     }
 
+    /**
+     * Persist New User
+     *
+     * @param userDO
+     * @return
+     */
     public UserDO createUser(UserDO userDO) {
         User user = UserMapper.map(userDO);
         return UserMapper.map(userRepository.save(user));
     }
 
+    /**
+     * Start New User Product Enrollment
+     *
+     * @param enrollmentVO
+     * @return
+     */
     public UserEnrollment startUserEnrollment(UserEnrollmentVO enrollmentVO) {
         UserEnrollment enrollment = new UserEnrollment();
         enrollment.setUserId(enrollmentVO.getUserId());
