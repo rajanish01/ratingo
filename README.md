@@ -114,8 +114,8 @@
 
 ### **Functionality & Assumptions** :
 
-**1. Provided an API for creating product, user can create any number of product using given API.
+1. Provided an API for creating product, user can create any number of product using given API.
 2. User Needs to Register Using His email id and phone no. If user already registered then he is not allowed to register again.
 3. Next User can choose from any valid product to get enrolled with.Once User gets enrolled his enrollment is marked as active with that product and he can not enroll again with same prodcut till previous enrollment is active.
-4. After enrollment is over user can rate the product, and enrollment will be marked as end and inactive. Now user can not rate it again.**
+4. After enrollment is over user can rate the product, and enrollment will be marked as end and inactive. Now user can not rate it again.
 
