@@ -51,4 +51,13 @@ public class UserRestController {
         }
     }
 
+    @GetMapping(value = "/enroll")
+    public ResponseEntity getUserEnrollment(@RequestParam("id") Long id) {
+        try {
+            return ResponseEntity.accepted().body(userService.getUserEnrollment(id));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+        }
+    }
+
 }

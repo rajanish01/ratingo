@@ -31,3 +31,8 @@ CREATE TABLE user_enrollment (
     end_date DATE,
     active TINYINT(1)
 );
+
+create index rating_idx on rating(id);
+create index product_idx on product(id);
+create index usr_idx on user(id);
+create index usr_enr_idx on user_enrollment(id);
